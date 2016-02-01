@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+  <meta charset="utf-8">
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
+  <link href="css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <link href="css/style.css" rel="stylesheet" type="text/css">
+
+  <script src="js/jquery.js" type="text/javascript"></script>
+  <script src="js/angular.js" type="text/javascript"></script>
+  <script src="js/bootstrap.min.js" type="text/javascript"></script>
+  <script src="js/main.js" type="text/javascript"></script>
+</head>
+<body>
+  <div class="navbar navbar-default" style="background: #337ab7; color: #f5f5f5; font-size: 18px; font-weight: bolder; margin: 0px; padding: 7px 20px; -webkit-border-radius: 0; -moz-border-radius: 0; border-radius: 0;">
+    <div class="container">
+      <h3>WeDpu</h3>
+    </div>
+  </div>
+
+  <div class="subnavbar">
+    <div class="subnavbar-inner">
+      <div class="container">
+        <ul class="mainnav">
+          <li id="mainMenu"><a href=""><i class="fa fa-sliders"></i><span>เมนูหลัก</span> </a> </li>
+          <li class="dropdown"><a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown"> <i class="fa fa-lock"></i><span>Dropdown</span> <b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            <li><a href="">เมนูที่ 1</a></li>
+            <li><a href="">เมนูที่ 2</a></li>
+            <li><a href="">เมนูที่ 3</a></li>
+            <li><a href="">เมนูที่ 4</a></li>
+          </ul>
+        </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- =========== Alert ===============-->
+  <div id="alertBox" class="container">
+      <div id="succAlert" class="alert alert-success alert-dismissible">
+        <button type="button" class="close" onclick="close_success()" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <strong>สำเร็จ</strong>&nbsp;<span class="text"></span>
+      </div>
+      <div id="infoAlert" class="alert alert-info alert-dismissible">
+        <button type="button" class="close" onclick="close_info()" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <strong>แนะนำ</strong>&nbsp;<span class="text"></span>
+      </div>
+      <div id="warnAlert" class="alert alert-warning alert-dismissible">
+        <button type="button" class="close" onclick="close_warn()" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <strong>คำเตือน</strong>&nbsp;<span class="text"></span>
+      </div>
+      <div id="errAlert" class="alert alert-danger alert-dismissible">
+        <button type="button" class="close" onclick="close_err()" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <strong>ผิดพลาด</strong>&nbsp;<span class="text"></span>
+      </div>
+  </div>
+
+
+  <!-- Content -->
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+
+      <div class="panel panel-default">
+        <div class="panel-heading"><h3 class="panel-title">ตั้งค่าผู้ใช้งาน</h3></div>
+        <div class="panel-body">
+
+          <div role="tabpanel">
+
+            <!-- Nav tabs -->
+            <ul class="nav nav-tabs" role="tablist">
+              <li role="presentation" class="active"><a href="#company" aria-controls="company" role="tab" data-toggle="tab">ข้อมูลนักศึกษา</a></li>
+              <li role="presentation"><a href="#document" aria-controls="document" role="tab" data-toggle="tab">เปลี่ยนพาสเวิด</a></li>
+            </ul>
+
+            <!-- Tab panes -->
+            <div class="tab-content">
+              <div role="tabpanel" class="tab-pane active" id="company" ng-controller="companyCtrl">
+
+                <form id="comForm" class="form-horizontal" rule="form">
+                  <legend></legend>
+
+                  <div class="form-group">
+                    <div class="col-md-2 text-right"></div>
+                    <div class="col-md-8 text-left">
+                      <button class="btn btn-primary" data-toggle="tooltip" title="บันทึกรายการลงฐานข้อมูล" type="button" ng-click="cusSave()"><i class="fa fa-save"></i> บันทึกข้อมูล</button>
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label class="col-md-2 control-label">ชื่อ</label>
+                    <div class="col-md-8">
+                      <input type="text" ng-model="cus.name" class="form-control">
+                    </div>
+                  </div>
+                    
+                  <div class="form-group">
+                    <label class="col-md-2 control-label">นามสกุล</label>
+                    <div class="col-md-8">
+                      <input type="text" ng-model="cus.address" class="form-control">
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label class="col-md-2 control-label">ที่อยู่</label>
+                    <div class="col-md-8">
+                      <input type="text" ng-model="cus.manager" class="form-control" style="width:200px;">
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label class="col-md-2 control-label">เบอร์โทร</label>
+                    <div class="col-md-8">
+                      <input type="text" ng-model="cus.tel" class="form-control" style="width:200px;">
+                    </div>
+                  </div>
+
+
+                  <div class="form-group">
+                    <label class="col-md-2 control-label">อีเมล์</label>
+                    <div class="col-md-8">
+                      <input type="text" ng-model="cus.email" class="form-control">
+                    </div>
+                  </div>
+                  
+                  <div class="form-group">
+                    <label class="col-md-2 control-label">Line ID</label>
+                    <div class="col-md-8">
+                      <input type="text" ng-model="cus.tax" class="form-control">
+                    </div>
+                  </div>
+
+                </form>
+
+              </div>
+
+              <div role="tabpanel" class="tab-pane" id="document" ng-controller="documentCtrl">
+
+                <form id="docForm" class="form-horizontal" rule="form">
+
+                  <legend></legend>
+
+                  <div class="form-group">
+                    <label class="col-md-2 control-label">พาสเวิดเก่า</label>
+                    <div class="col-md-8">
+                      <input type="text" ng-model="doc.tax" class="form-control">
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label class="col-md-2 control-label">พาสเวิดใหม่</label>
+                    <div class="col-md-8">
+                      <input type="text" ng-model="doc.tax" class="form-control">
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label class="col-md-2 control-label">พาสเวิดใหม่(ยืนยันอีกครั้ง)</label>
+                    <div class="col-md-8">
+                      <input type="text" ng-model="doc.tax" class="form-control">
+                    </div>
+                  </div>
+
+                </form>
+
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+  <!-- Content -->
+
+
+  <script type="text/javascript">
+
+    // Active Menu ทำไว้ในหน้า content ที่ต้องการเพื่อให้มัน active ไว้ที่เมนู ไม่ควรทำไว้ที่ header.php เพราะจะทำให้มั่วพอสมควร
+    $(function(){
+      $("#mainMenu").addClass('active');
+    });
+    
+    $(function(){
+      $('#succAlert').hide();
+      $('#infoAlert').hide();
+      $('#warnAlert').hide();
+      $('#errAlert').hide();
+
+    });
+
+    function close_success(){
+      $('#succAlert').hide();
+    }
+    function close_info(){
+      $('#infoAlert').hide();
+    }
+    function close_warn(){
+      $('#warnAlert').hide();
+    }
+    function close_err(){
+      $('#errAlert').hide();
+    }
+
+  </script>
+
+</body>
+</html>
